@@ -1,0 +1,248 @@
+:root {
+  --ink: #1c2b22;
+  --ink-soft: #4a5c52;
+  --paper: #f4f1ea;
+  --paper-deep: #e8e2d6;
+  --sheet: #fffdf8;
+  --forest: #2f5d45;
+  --forest-dark: #214233;
+  --moss: #e4efe6;
+  --line: #d4cbb8;
+  --danger: #9b3a2f;
+  --shadow: 0 18px 40px rgba(33, 44, 36, 0.08);
+  --ui: "Segoe UI", "Microsoft JhengHei UI", "PingFang TC", sans-serif;
+  --mono: "Cascadia Code", "Sarasa Gothic", "Consolas", "Microsoft JhengHei", monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: var(--ui);
+  color: var(--ink);
+  background: var(--paper);
+}
+
+button,
+textarea {
+  font-family: inherit;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 56px;
+  padding: 0 16px;
+  border-bottom: 1px solid var(--line);
+  background: linear-gradient(180deg, #faf7f0 0%, #f1ece2 100%);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 160px;
+}
+
+.brand-mark {
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  background: var(--forest);
+  color: #f7f3ea;
+}
+
+.brand-name {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.brand-sub {
+  font-size: 11px;
+  color: var(--ink-soft);
+}
+
+.file-meta {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.file-name {
+  font-size: 13px;
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.file-status {
+  font-size: 11px;
+  color: var(--ink-soft);
+}
+
+.toolbar-actions {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 34px;
+  padding: 0 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fffdf8;
+  color: var(--ink);
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: var(--moss);
+  border-color: #b7cbbd;
+}
+
+.btn:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+
+.btn-primary {
+  background: var(--forest);
+  border-color: var(--forest-dark);
+  color: #f7f3ea;
+}
+
+.btn-primary:hover {
+  background: var(--forest-dark);
+}
+
+.workspace {
+  flex: 1;
+  min-height: 0;
+}
+
+.pane {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-width: 0;
+}
+
+.pane-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 32px;
+  padding: 0 14px;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  background: var(--paper-deep);
+  border-bottom: 1px solid var(--line);
+}
+
+.editor {
+  flex: 1;
+  width: 100%;
+  border: 0;
+  resize: none;
+  outline: none;
+  padding: 18px 20px;
+  background: #1c2420;
+  color: #e7efe8;
+  font-family: var(--mono);
+  font-size: 13.5px;
+  line-height: 1.65;
+  tab-size: 2;
+}
+
+.preview-scroll {
+  flex: 1;
+  overflow: auto;
+  background:
+    linear-gradient(90deg, rgba(47, 93, 69, 0.03) 1px, transparent 1px),
+    var(--paper);
+  background-size: 24px 24px;
+}
+
+.preview-frame {
+  max-width: 860px;
+  margin: 24px auto 48px;
+  padding: 44px 52px 56px;
+  background: var(--sheet);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+
+.drop-mask {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(47, 93, 69, 0.16);
+  color: var(--forest-dark);
+  font-weight: 700;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.status-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 28px;
+  padding: 0 14px;
+  font-size: 11px;
+  color: var(--ink-soft);
+  border-top: 1px solid var(--line);
+  background: #efe9dc;
+}
+
+.status-error {
+  color: var(--danger);
+}
+
+.resize-handle {
+  width: 8px;
+  background: var(--paper-deep);
+  border-left: 1px solid var(--line);
+  border-right: 1px solid var(--line);
+}
+
+.resize-handle:hover,
+.resize-handle[data-resize-handle-state='drag'] {
+  background: #d7e4da;
+}
+
+.app-shell {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
